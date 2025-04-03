@@ -1,4 +1,4 @@
-# NOME DO PROJETO ----------- FAZER DEPOIS
+# Teste Técnico
 
 
 ## 📌 Sobre
@@ -29,7 +29,7 @@ Inclui funcionalidades como **Listar, Criar, Editar e Excluir**.
 
 1. **Clone o repositório**
 
-`git clone COLAR A URL DO REPOSITORIO`  
+`git clone https://github.com/GuVS17/Projeto_teste.git`  
 
 2. **Acesse a pasta da API**
 
