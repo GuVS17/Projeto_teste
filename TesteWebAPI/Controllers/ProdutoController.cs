@@ -67,7 +67,7 @@ namespace TesteWebAPI.Controllers
         /// Atualiza um produto
         /// </summary>
         /// <returns></returns>
-        [HttpPut("{Id}")] 
+        [HttpPut("{id}")] 
         public async Task<IActionResult> Put(int id, Produto produtos) {
             
             _repo.Update(produtos);
