@@ -1,0 +1,56 @@
+<div class="row">
+
+  <div class="col-sm-6" *ngIf="produtoSelecionado">
+    <app-titulo [titulo]="(produtoSelecionado.id === 0 ? 'Novo Produto' : 'Cód. Produto:' + produtoSelecionado.id)"><button class="btn btn-outline-danger" (click)="voltar()">Fechar</button></app-titulo>
+
+
+  <form [formGroup]="produtoForm" (submit)="produtoSubmit()">   <!--O formgroup mostra que o alunoForm é um formbuilder e o submit é o envio de informações pra algum lugar -->
+    <div class="form-group">
+      <label for="formGroupExampleInput2" class="form-label">Nome</label>
+      <input type="text" formControlName="nome" class="form-control" >
+    </div>
+    <div class="form-group">
+      <label for="formGroupExampleInput2" class="form-label">Quantidade</label>
+      <input type="text" formControlName="quantidade"class="form-control" >
+    </div>
+    <div class="form-group">
+      <button class="btn btn-success" style="margin-top: 10px;" [disabled]="!produtoForm.valid">Salvar</button>
+    </div>
+  </form>
+</div>
+
+<div [ngClass]="{'col-sm-12' :!produtoSelecionado, 'col-sm-6' :produtoSelecionado}">
+  <button class="btn btn-success float-end" (click)="produtoNovo()">Cadastrar Produto</button>
+  <app-titulo [titulo]="titulo"></app-titulo>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Visualizar</th>
+        <th scope="col">#</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Quantidade</th>
+        <th scope="col">Opções</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let produto of produtos" >
+        <td> <button (click)="produtoSelect(produto)" class="btn btn-sm btn-secondary">Detalhes</button>
+        </td>
+        <td scope="row">{{produto.id}}</td>
+        <td>{{produto.nome}}</td>
+        <td>{{produto.quantidade}}</td>
+        <td>
+          <button col-sm class="btn btn-sm btn-outline-primary" (click)="deletarProduto(produto.id)">Excluir</button>
+        </td>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- <button class="btn btn-outline-danger" (click)="voltar()">Fechar</button> -->
+
+<!--
+<app-titulo [titulo]="(produtoSelecionado.id === 0 ? 'Novo Produto' : 'Cód. Produto:' + produtoSelecionado.id)">
+  <button class="btn btn-outline-danger" (click)="voltar()"></button>
+</app-titulo>
+ -->

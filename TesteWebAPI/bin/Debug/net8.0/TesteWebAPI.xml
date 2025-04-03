@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TesteWebAPI</name>
+    </assembly>
+    <members>
+        <member name="M:TesteWebAPI.Controllers.ProdutoController.Get">
+            <summary>
+            Busca todos os produtos
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TesteWebAPI.Controllers.ProdutoController.GetById(System.Int32)">
+            <summary>
+            Busca produtos pelo Id
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TesteWebAPI.Controllers.ProdutoController.Post(TesteWebAPI.models.Produto)">
+            <summary>
+            Insere um novo produto
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TesteWebAPI.Controllers.ProdutoController.Put(System.Int32,TesteWebAPI.models.Produto)">
+            <summary>
+            Atualiza um produto
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TesteWebAPI.Controllers.ProdutoController.Delete(System.Int32)">
+            <summary>
+            Apaga um produto
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:TesteWebAPI.Migrations.init">
+            <inheritdoc />
+        </member>
+        <member name="M:TesteWebAPI.Migrations.init.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:TesteWebAPI.Migrations.init.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:TesteWebAPI.Migrations.init.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>
