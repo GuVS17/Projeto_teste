@@ -29,29 +29,29 @@ Inclui funcionalidades como **Listar, Criar, Editar e Excluir**.
 
 1. **Clone o repositório**
 
-`git clone https://github.com/GuVS17/Projeto_teste.git`  
+     `git clone https://github.com/GuVS17/Projeto_teste.git`  
 
 2. **Acesse a pasta da API**
 
-`cd TesteWebAPI`
+     `cd TesteWebAPI`
 
 3. **Instale as dependências**
 
-`dotnet restore`
+     `dotnet restore`
 
 4. **Configure a string de conexão no ´appsettings.json´**
 
-`"ConnectionStrings": {
-  "DefaultConnection": "Host=localhost;Port=5432;Database=SeuBanco;Username=SeuUsuario;Password=SuaSenha"
-}`
+     `"ConnectionStrings": {
+       "DefaultConnection": "Host=localhost;Port=5432;Database=SeuBanco;Username=SeuUsuario;Password=SuaSenha"
+     }`
 
 5. **Execute as migrations**
 
-`dotnet ef database update`
+     `dotnet ef database update`
 
 6. **Rode a API**
 
-`dotnet run`
+     `dotnet run`
 
 A API estará rodando em: http://localhost:5110
 
@@ -60,11 +60,11 @@ A API estará rodando em: http://localhost:5110
 5. **Instale o PostgreSQL.**
 6. **No terminal do PostgreSQL**, crie o banco
 
-`CREATE DATABASE nomedobanco`
+     `CREATE DATABASE nomedobanco`
 
 depois restaure o banco com:
 
-`psql -U SeuUsuario -d SeuBanco -f backup.sql`
+     `psql -U SeuUsuario -d SeuBanco -f backup.sql`
 
 **O arquivo backup.sql está na raiz do diretório**
 
@@ -72,11 +72,11 @@ depois restaure o banco com:
 
 1. **Acesse a pasta do frontend**
 
-`cd TesteAPP`
+     `cd TesteAPP`
 
 2. **Instale as dependências**
 
-`npm install`
+     `npm install`
 
 3. **Configure o ambiente**
 
@@ -127,7 +127,7 @@ Cole este JSON:
 * Erro ao rodar dotnet ef database update
     + Certifique-se de que o Entity Framework Core está instalado com:
       
-      `dotnet tool install --global dotnet-ef`
+        `dotnet tool install --global dotnet-ef`
 
 ---
 ### 📌 Autor
