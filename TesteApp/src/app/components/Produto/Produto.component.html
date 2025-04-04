@@ -1,6 +1,6 @@
 <div class="row">
 
-  <div class="col-sm-6" *ngIf="produtoSelecionado">
+  <div class="col-sm-6" *ngIf="produtoSelecionado" >
     <app-titulo [titulo]="(produtoSelecionado.id === 0 ? 'Novo Produto' : 'Cód. Produto:' + produtoSelecionado.id)"></app-titulo>
     <button class="btn btn-outline-danger" (click)="voltar()">Fechar</button>
 
@@ -21,27 +21,28 @@
 </div>
 
 <div [ngClass]="{'col-sm-12' :!produtoSelecionado, 'col-sm-6' :produtoSelecionado}">
-  <button class="btn btn-success float-end" (click)="produtoNovo()">Cadastrar Produto</button>
+  <button class="btn btn-success float-end" style="margin-top: 10px;" (click)="produtoNovo()">Cadastrar Produto</button>
   <app-titulo [titulo]="titulo"></app-titulo>
-  <table class="table table-bordered">
-    <thead>
+  <table class="table table-bordered table-hover">
+    <thead class="table-secondary text-center" >
       <tr>
-        <th>Visualizar</th>
-        <th scope="col">#</th>
-        <th scope="col">Nome</th>
-        <th scope="col">Quantidade</th>
-        <th scope="col">Opções</th>
+        <th style="width: 5%;" >Visualizar</th>
+        <th style="width: 3%;" scope="col">#</th>
+        <th style="width: 5%;" scope="col">Nome</th>
+        <th style="width: 3%;" scope="col">Quantidade</th>
+        <th style="width: 5%;" scope="col">Opções</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let produto of produtos" >
-        <td> <button (click)="produtoSelect(produto)" class="btn btn-sm btn-secondary">Detalhes</button>
+        <td class="text-center">
+          <button (click)="produtoSelect(produto)" class="btn btn-sm" style="background-color: rgb(0, 65, 129); color: white;">Detalhes</button>
         </td>
-        <td scope="row">{{produto.id}}</td>
+        <td scope="row" class="text-center">{{produto.id}}</td>
         <td>{{produto.nome}}</td>
-        <td>{{produto.quantidade}}</td>
-        <td>
-          <button col-sm class="btn btn-sm btn-outline-primary" (click)="deletarProduto(produto.id)">Excluir</button>
+        <td class="text-center">{{produto.quantidade}}</td>
+        <td class="text-center">
+          <button col-sm class="btn btn-sm btn-outline-danger " (click)="deletarProduto(produto.id)">Excluir</button>
         </td>
       </tbody>
     </table>
