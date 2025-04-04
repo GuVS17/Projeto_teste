@@ -4,7 +4,7 @@
         <name>TesteWebAPI</name>
     </assembly>
     <members>
-        <member name="M:TesteWebAPI.Controllers.ProdutoController.Get">
+        <member name="M:TesteWebAPI.Controllers.ProdutoController.Get(TesteWebAPI.Helpers.PageParams)">
             <summary>
             Busca todos os produtos
             </summary>

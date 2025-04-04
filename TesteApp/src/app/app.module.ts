@@ -10,7 +10,8 @@ import { provideHttpClient } from '@angular/common/http';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { DashboardComponent } from './components/Dashboard/Dashboard.component';
 import { TituloComponent } from './components/titulo/titulo.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PaginationModule } from 'ngx-bootstrap/pagination'
 
 @NgModule({
   declarations: [
@@ -26,6 +27,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     BsDropdownModule.forRoot(),
     ReactiveFormsModule,
+    PaginationModule.forRoot(),
+    FormsModule
   ],
   providers: [
     provideHttpClient()

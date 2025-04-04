@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using TesteWebAPI.Helpers;
 using TesteWebAPI.models;
 
 namespace TesteWebAPI.data
@@ -32,14 +33,15 @@ namespace TesteWebAPI.data
         }
 
 
-        public async Task<Produto[]> GetAllProdutosAsync() {
+        public async Task<PageList<Produto>> GetAllProdutosAsync(PageParams pageParams) {
 
             IQueryable<Produto> query = _context.Produtos;        //Consulta em Produto, permitindo modificar a query antes da execução no banco
 
             query = query.AsNoTracking()
                          .OrderBy(a => a.Id);
             
-            return await query.ToArrayAsync();
+            return await Task.Run(() =>
+                    PageList<Produto>.CreateAsync(query, pageParams.PageNumber, pageParams.PageSize));
         }
 
         public async Task<Produto> GetProdutosByIdAsync(int id) {

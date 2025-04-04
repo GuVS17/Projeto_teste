@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TesteWebAPI.data;
+using TesteWebAPI.Helpers;
 using TesteWebAPI.models;
 
 namespace TesteWebAPI.Controllers
@@ -25,10 +26,12 @@ namespace TesteWebAPI.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public async Task<IActionResult> Get(){
+        public async Task<IActionResult> Get([FromQuery]PageParams pageParams){
 
-            var produto = await _repo.GetAllProdutosAsync();
+            var produto = await _repo.GetAllProdutosAsync(pageParams);
             if (produto == null) return BadRequest("Aluno não encontrado");
+
+            Response.AddPagination(produto.CurrentPage, produto.PageSize, produto.TotalCount, produto.TotalPages);
 
             return Ok(produto);
         }

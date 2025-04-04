@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProdutoService } from '../../services/Produto.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { Produto } from '../../models/Produto';
+import { PaginatedResult, Pagination } from '../../models/Pagination';
 
 @Component({
   selector: 'app-Produto',
@@ -15,6 +16,7 @@ export class ProdutoComponent implements OnInit {
   public produtoSelecionado?: Produto;
   public modo: 'post' | 'put' = 'post';
   public titulo = 'Produtos'
+  pagination: Pagination;
 
   public produtos! : Produto[];
 
@@ -25,14 +27,16 @@ export class ProdutoComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.pagination = { currentPage: 1, itemsPerPage: 10 } as Pagination;
     this.criarForm();
     this.carregarProdutos();
   }
 
   carregarProdutos() {
-    this.produtoService.getAll().subscribe({
-      next: (prod: Produto[]) => {
-        this.produtos = prod;
+    this.produtoService.getAll(this.pagination.currentPage, this.pagination.itemsPerPage).subscribe({
+      next: (prod: PaginatedResult<Produto[]>) => {
+        this.produtos = prod.result;
+        this.pagination = prod.pagination;
       },
       error: (erro: any) => {
         console.error(erro);
@@ -40,12 +44,10 @@ export class ProdutoComponent implements OnInit {
     })
   }
 
-  // get tituloProduto(): string {
-  //   if (!this.produtoSelecionado) {
-  //     return ''; // Ou qualquer valor padrão para evitar erro
-  //   }
-  //   return this.produtoSelecionado.id === 0 ? 'Novo Produto' : 'Cód. Produto: ' + this.produtoSelecionado.id;
-  // }
+  pageChanged(event: any): void {
+    this.pagination.currentPage= event.page;
+    this.carregarProdutos();
+  }
 
   criarForm() {
     this.produtoForm = this.fb.group({
@@ -87,6 +89,8 @@ export class ProdutoComponent implements OnInit {
       }
     })
   }
+
+
 
 
   produtoSelect(prod: Produto) {

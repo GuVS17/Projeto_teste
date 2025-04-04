@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TesteWebAPI.Helpers;
 using TesteWebAPI.models;
 
 namespace TesteWebAPI.data
@@ -13,7 +14,7 @@ namespace TesteWebAPI.data
         void Delete<T>(T entity) where T : class;
         Task<bool> SaveChangesAsync();
 
-        Task<Produto[]> GetAllProdutosAsync();
+        Task<PageList<Produto>> GetAllProdutosAsync(PageParams pageParams);
         Task<Produto> GetProdutosByIdAsync(int produtoId);
 
     };
