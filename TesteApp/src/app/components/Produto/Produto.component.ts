@@ -12,14 +12,14 @@ import { Produto } from '../../models/Produto';
 export class ProdutoComponent implements OnInit {
 
   public produtoForm!: FormGroup
-  public produtoSelecionado: Produto | null = null;
+  public produtoSelecionado?: Produto;
   public modo: 'post' | 'put' = 'post';
   public titulo = 'Produtos'
 
   public produtos! : Produto[];
 
   constructor(private fb: FormBuilder,
-              private produtoService: ProdutoService
+              private produtoService: ProdutoService,
   ) {
     this.criarForm();
   }
@@ -39,6 +39,13 @@ export class ProdutoComponent implements OnInit {
       },
     })
   }
+
+  // get tituloProduto(): string {
+  //   if (!this.produtoSelecionado) {
+  //     return ''; // Ou qualquer valor padrão para evitar erro
+  //   }
+  //   return this.produtoSelecionado.id === 0 ? 'Novo Produto' : 'Cód. Produto: ' + this.produtoSelecionado.id;
+  // }
 
   criarForm() {
     this.produtoForm = this.fb.group({
@@ -83,7 +90,7 @@ export class ProdutoComponent implements OnInit {
 
 
   produtoSelect(prod: Produto) {
-    this.produtoSelecionado = {id: 0, nome: '', quantidade: 0};
+    this.produtoSelecionado = prod
     this.produtoForm.patchValue(prod); //Faz o match das informações
   }
 
@@ -93,7 +100,7 @@ export class ProdutoComponent implements OnInit {
   }
 
   voltar() {
-    this.produtoSelecionado = null; //Voltar para a página definida
+    this.produtoSelecionado = undefined; //Voltar para a página definida
   }
 
 }
